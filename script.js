@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── 4. ACTIVE NAV LINK ── */
-  const page = window.location.pathname.split('/').pop() || 'home.html';
+  const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === page || (page === '' && href === 'home.html')) {
+    if (href === page || (page === '' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
