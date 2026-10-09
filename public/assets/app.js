@@ -48,24 +48,6 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
   });
 }
 
-if (matchMedia('(pointer: fine) and (min-width: 701px)').matches && !reducedMotion.matches) {
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor'; cursor.textContent = '✦'; cursor.setAttribute('aria-hidden', 'true');
-  document.body.append(cursor); document.body.classList.add('has-cursor');
-  let position = { x: -200, y: -200 }, frame = false;
-  document.addEventListener('pointermove', event => {
-    position = { x: event.clientX, y: event.clientY };
-    const overInput = event.target.closest('input,textarea,select,iframe');
-    cursor.classList.toggle('visible', !overInput);
-    const overLink = !!event.target.closest('a,button');
-    cursor.classList.toggle('link', overLink); cursor.textContent = overLink ? 'J!NX' : '✦';
-    if (!frame) { frame = true; requestAnimationFrame(() => {
-      cursor.style.left = `${position.x}px`; cursor.style.top = `${position.y}px`; frame = false;
-    }); }
-  });
-  document.addEventListener('pointerleave', () => cursor.classList.remove('visible'));
-}
-
 const year = document.querySelector('[data-year]');
 if (year) year.textContent = String(new Date().getFullYear());
 
